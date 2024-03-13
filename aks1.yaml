@@ -5,21 +5,25 @@
 ## AKS cluster configuration
 
 ## The subscription ID
-#subscriptionID: ""
-
+subscriptionID: haha
+identity:
+  clientID: nice
+  tenantID: try
+  clientSecret: buddy
+  type: ServicePrincipal
 cluster:
 
   ## The resource group for the AKS cluster object
-  resourceGroupName: aksclusters
+  resourceGroupName: aksclustersnew
 
   ## The resource group name for the nodes
-  nodeResourceGroupName: capz1
+  nodeResourceGroupName: capz1nodes
 
   ## The location of the cluster
-  location: westeurope
+  location: eastus
 
   ## The name of the cluster
-  name: capz1
+  name: capz1new
 
   ## the subnet 
   cidrBlocks:
@@ -27,7 +31,7 @@ cluster:
 
 controlplane:
   ## SSH public key (must be valid)
-  sshPublicKey: ""
+  sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDH8QZIgmW/NHmRHTjlFN80sYJuzmOQVHGM/o7pFQoBWzPWgsLWGtPFuCnVBoBZAXbi37bmftXMWtaprlNQXk9EMqIjEeipflUiimV+TRj3HGcDsP8Duw84WQQFi/SA0a62ImUatOeKZUYS6TUsNzq61tXOMScsjGGXEivEfqoNdKSF7XiP9CmDj3ImsO6epsa+NsrRVf5a0L9aA3b9OC+5eG4vqZDKhtrSBW0OCIsPKxwhT+mX0ujMwoJsMHIUz9GfCatdqJiGkAYWW+W5+Q+sUfdGruD9HzuuZcQ2GN8cVaz0e2KeGLfiHb+P2VngeQBrM9lWoPx0E/6Xr4/rCXMjevYBeDiu/XfNoQM4ZKhhDWLr9ycEuNVcGjFjrhcQAv2yKfdU6IjpSBMDhbjcVbp/68TXwo0X2m8dQYD4kJhmImEOA6vBfmAqIdJjhQY7mNzg9KqTyNOe0oPxCxtvHPmXbE9n/6jafQs9ekiyoWI281Jrm0qZRAxFZSQ0Wb/E0Yc= jonathan@Jonathan-PC
   
   ## Kubernetes version
   kubernetes_version: "v1.28.3"
@@ -37,16 +41,73 @@ controlplane:
 
   ## Network Plugin "kubenet" or "azure"
   networkPlugin: "kubenet"
+  networkPluginMode: null
 
 #Only 1 Nodepool of mode System is allowed  
 agentpools:
- - name: capz1np0
-   mode: System
-   sku: Standard_B2s
-   nodecount: 1
-   osDiskSizeGB: 100
- - name: capz1np1
-   mode: User
-   nodecount: 1
-   sku: Standard_B2s
-   osDiskSizeGB: 100
+- name: capz1np0
+  mode: System
+  sku: Standard_B2s
+  nodecount: 1
+  osDiskSizeGB: 100
+  additionalTags:
+  - key: test
+    value: test
+  #  availabilityZones: 
+  #   - "1"
+  #   - "2"
+  #   - "3"
+  nodeLabels:
+  - key: test
+    value: test 
+  taints: {}
+  scaling:
+    minSize: 1
+    maxSize: 5
+  maxPods: 110
+  osDiskType : "Managed"
+  enableUltraSSD : false
+  osType : "Linux"
+  enableNodePublicIP : false
+  nodePublicIPPrefixID : ""
+  scaleSetPriority : "Regular"
+  scaleDownMode : "Delete"
+  spotMaxPrice : ""
+  kubeletConfig : ""
+  kubeletDiskType : "OS"
+  linuxOSConfig : "" 
+  subnetName : ""
+  enableFIPS : false
+  enableEncryptionAtHost : false 
+- name: capz1np1
+  mode: User
+  nodecount: 1
+  sku: Standard_B2s
+  osDiskSizeGB: 100
+  additionalTags:
+  - key: test
+    value: test
+#  availabilityZones: 
+#   - "1"
+#   - "2"
+#   - "3"
+  nodeLabels:
+  - key: test
+    value: test 
+  taints: {}
+  scaling:
+    minSize: 1
+    maxSize: 5
+  maxPods: 110
+  osDiskType : "Managed"
+  enableUltraSSD : false
+  osType : "Linux"
+  enableNodePublicIP : false
+  nodePublicIPPrefixID : ""
+  scaleSetPriority : "Regular"
+  scaleDownMode : "Delete"
+  spotMaxPrice : ""
+  kubeletConfig : ""
+  kubeletDiskType : "OS"
+  linuxOSConfig : "" 
+  subnetName : ""    
