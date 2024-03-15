@@ -106,16 +106,16 @@ helm install capz1 charts/azure-managed-cluster/  \
 --set cluster.resourceGroupName=aksclusters \
 --set cluster.nodeResourceGroupName=capz1 \
 --set cluster.name=aks1 \
---set agentpools.0.name=capz1np0 \
---set agentpools.0.nodecount=1 \
---set agentpools.0.sku=Standard_B4ms \
---set agentpools.0.osDiskSizeGB=100 \
---set agentpools.0.mode=System \
---set agentpools.1.name=capz1np1 \
---set agentpools.1.nodecount=1 \
---set agentpools.1.sku=Standard_B4ms \
---set agentpools.1.osDiskSizeGB=10 \
---set agentpools.1.mode=User 
+--set agentpools.agentpool0.name=capz1np0 \
+--set agentpools.agentpool0.nodecount=1 \
+--set agentpools.agentpool0.sku=Standard_B4ms \
+--set agentpools.agentpool0.osDiskSizeGB=100 \
+--set agentpools.agentpool0.mode=System \
+--set agentpools.agentpool1.name=capz1np1 \
+--set agentpools.agentpool1.nodecount=1 \
+--set agentpools.agentpool1.sku=Standard_B4ms \
+--set agentpools.agentpool1.osDiskSizeGB=10 \
+--set agentpools.agentpool1.mode=User 
 ```
 
 or more simply (after you edit the values file with your own values):
